@@ -22,6 +22,7 @@ export interface UserConfig {
   llama_cloud_api_key: string | null;
   cohere_api_key: string | null;
   qdrant_url: string | null;
+  qdrant_api_key: string | null;
   default_llm_model: string;
   theme: 'light' | 'dark' | 'system';
   created_at: string;

@@ -18,6 +18,7 @@ export default function Settings() {
         llama_cloud_api_key: '',
         cohere_api_key: '',
         qdrant_url: '',
+        qdrant_api_key: '',
     });
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
@@ -41,6 +42,7 @@ export default function Settings() {
                     llama_cloud_api_key: data.llama_cloud_api_key || '',
                     cohere_api_key: data.cohere_api_key || '',
                     qdrant_url: data.qdrant_url || '',
+                    qdrant_api_key: data.qdrant_api_key || '',
                 });
             }
         } catch (error) {
@@ -146,6 +148,28 @@ export default function Settings() {
                             >
                                 cloud.qdrant.io
                             </a>
+                        </p>
+                    </div>
+
+                    {/* Qdrant API Key */}
+                    <div className="flex flex-col gap-2">
+                        <label
+                            htmlFor="qdrant-key"
+                            className="text-text-secondary text-sm font-medium"
+                        >
+                            Qdrant API Key <span className="text-red-500">*</span>
+                        </label>
+                        <Input
+                            id="qdrant-key"
+                            type="password"
+                            placeholder="your-qdrant-api-key"
+                            value={config.qdrant_api_key || ''}
+                            onChange={(e) =>
+                                setConfig({ ...config, qdrant_api_key: e.target.value })
+                            }
+                        />
+                        <p className="text-xs text-slate-500">
+                            API key for Qdrant Cloud authentication. Find it in your Qdrant Cloud dashboard.
                         </p>
                     </div>
                 </div>
