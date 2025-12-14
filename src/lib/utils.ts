@@ -32,8 +32,10 @@ export function formatRelativeTime(dateString: string): string {
 }
 
 // Format file size
-export function formatFileSize(bytes: number | null): string {
-  if (bytes === null || bytes === 0) return '0 Bytes';
+export function formatFileSize(bytes: number | null | undefined): string {
+  if (bytes === null || bytes === undefined || bytes === 0 || isNaN(bytes)) {
+    return '';  // Return empty string instead of "0 Bytes" for missing data
+  }
   
   const k = 1024;
   const sizes = ['Bytes', 'KB', 'MB', 'GB'];
